@@ -54,6 +54,7 @@
               pkgs-2305.yarn
               pkgs-2305.nodejs-16_x
               pkgs.curl
+							pkgs.rubocop
               
               pkgs.libxml2
               pkgs.libxml2.dev
