@@ -43,7 +43,6 @@
               pkgs.postgresql
               pkgs.libyaml
               pkgs.msgpack
-              pkgs.ruby-lsp
               pkgs.openssl
               pkgs.shared-mime-info
               pkgs.file
@@ -58,9 +57,13 @@
               pkgs.pkg-config
               pkgs.zlib
               pkgs.zlib.dev
+							pkgs.heroku
             ];
 
             shellHook = ''
+              unset GEM_PATH
+              unset RUBYLIB
+
               export FREEDESKTOP_MIME_TYPES_PATH="${pkgs.shared-mime-info}/share/mime/packages/freedesktop.org.xml"
               export LD_LIBRARY_PATH="${pkgs.curl.out}/lib:$LD_LIBRARY_PATH"
               export PKG_CONFIG_PATH="${pkgs.libxml2.dev}/lib/pkgconfig"
@@ -68,7 +71,6 @@
               export LDFLAGS="-L${pkgs.libxml2.out}/lib -L${pkgs.zlib.out}/lib $LDFLAGS"
 
               echo RubyVersion: $(ruby -v)
-              fish
             '';
           };
       });
